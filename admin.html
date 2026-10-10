@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BIBBLE DMAX | Admin Upload</title>
+
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    :root {
+      --black: #111111;
+      --gold: #f5c400;
+      --white: #ffffff;
+      --muted: #bdbdbd;
+      --panel: #1c1c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 16px;
+      background: var(--black);
+      color: var(--white);
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 620px;
+      margin: 30px auto;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .brand h1 {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-size: 29px;
+      letter-spacing: 1px;
+    }
+
+    .brand p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid #353535;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--gold);
+      font-size: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 16px 0 8px;
+      font-weight: bold;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #555;
+      border-radius: 8px;
+      background: #101010;
+      color: white;
+      font-size: 16px;
+    }
+
+    input[type="file"] {
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--gold);
+      color: #111;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .secondary {
+      background: #333;
+      color: white;
+      border: 1px solid #555;
+    }
+
+    .help {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    #status {
+      display: none;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 16px;
+      overflow-wrap: anywhere;
+      line-height: 1.5;
+    }
+
+    #status.success {
+      display: block;
+      background: #173d25;
+      color: #c9ffd6;
+    }
+
+    #status.error {
+      display: block;
+      background: #4a2020;
+      color: #ffd6d6;
+    }
+
+    #status.info {
+      display: block;
+      background: #303030;
+      color: white;
+    }
+
+    #result {
+      display: none;
+      margin-top: 18px;
+    }
+
+    #preview {
+      display: block;
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      background: #080808;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    #imageUrl {
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      color: #888;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 26px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <header class="brand">
+      <h1>BIBBLE DMAX</h1>
+      <p>Interior Decor &amp; Gadgets</p>
+      <p>ADMIN IMAGE UPLOAD</p>
+    </header>
+
+    <section class="panel" id="loginPanel">
+      <h2>Admin Sign In</h2>
+
+      <p class="help">
+        Sign in with the email and password for the admin account
+        created in your Supabase project.
+      </p>
+
+      <form id="loginForm">
+        <label for="email">Admin Email</label>
+        <input
+          id="email"
+          type="email"
+          autocomplete="username"
+          required
+        >
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
+
+        <button id="loginButton" type="submit">
+          Sign In
+        </button>
+      </form>
+    </section>
+
+    <section class="panel hidden" id="uploadPanel">
+      <h2>Upload a Product Photo</h2>
+
+      <p class="help">
+        Choose a clear photo of an interior décor item, furniture,
+        decoration or gadget. Accepted formats: JPG, PNG, WEBP and GIF.
+        Maximum file size: 5 MB.
+      </p>
+
+      <form id="uploadForm">
+        <label for="photo">Choose Photo</label>
+        <input
+          id="photo"
+          type="file"
+          accept="image/jpeg,image/png,image/webp,image/gif"
+          required
+        >
+
+        <button id="uploadButton" type="submit">
+          Upload Photo
+        </button>
+      </form>
+
+      <div id="result">
+        <img id="preview" alt="Uploaded photo preview">
+
+        <label for="imageUrl">Public Photo Link</label>
+        <input id="imageUrl" type="text" readonly>
+
+        <button id="copyButton" type="button">
+          Copy Photo Link
+        </button>
+
+        <p class="help">
+          Keep this link to connect the photo to the website gallery.
+          Uploading a photo does not automatically add it to the homepage.
+        </p>
+      </div>
+
+      <button id="logoutButton" class="secondary" type="button">
+        Sign Out
+      </button>
+    </section>
+
+    <div id="status" role="status" aria-live="polite"></div>
+
+    <footer>
+      BIBBLE DMAX · Challenge, Ibadan<br>
+      Admin access only
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    "use strict";
+
+    const SUPABASE_URL =
+      "https://unecwothuhwhwctibtus.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_pu_uVT833bXUnr0wAbXKOw_o2ARp36T";
+
+    const BUCKET_NAME = "bibble-dmax-images";
+
+    const ADMIN_USER_ID =
+      "3f0ca354-c270-46ad-9310-36fb1a6d379b";
+
+    const client = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const loginPanel = document.getElementById("loginPanel");
+    const uploadPanel = document.getElementById("uploadPanel");
+    const loginForm = document.getElementById("loginForm");
+    const uploadForm = document.getElementById("uploadForm");
+    const loginButton = document.getElementById("loginButton");
+    const uploadButton = document.getElementById("uploadButton");
+    const photoInput = document.getElementById("photo");
+    const statusBox = document.getElementById("status");
+    const resultBox = document.getElementById("result");
+    const preview = document.getElementById("preview");
+    const imageUrl = document.getElementById("imageUrl");
+
+    let busy = false;
+
+    function showStatus(message, type = "info") {
+      statusBox.textContent = message;
+      statusBox.className = type;
+    }
+
+    function clearStatus() {
+      statusBox.textContent = "";
+      statusBox.className = "";
+      statusBox.style.display = "none";
+    }
+
+    function setLoggedIn(loggedIn) {
+      loginPanel.classList.toggle("hidden", loggedIn);
+      uploadPanel.classList.toggle("hidden", !loggedIn);
+    }
+
+    async function verifyAdmin() {
+      const { data, error } = await client.auth.getSession();
+
+      if (error) {
+        setLoggedIn(false);
+        return false;
+      }
+
+      const user = data.session?.user;
+
+      if (!user) {
+        setLoggedIn(false);
+        return false;
+      }
+
+      if (user.id !== ADMIN_USER_ID) {
+        await client.auth.signOut();
+        setLoggedIn(false);
+        showStatus(
+          "This account is not authorized to use this upload page.",
+          "error"
+        );
+        return false;
+      }
+
+      setLoggedIn(true);
+      return true;
+    }
+
+    loginForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      if (busy) return;
+
+      busy = true;
+      loginButton.disabled = true;
+      loginButton.textContent = "Signing In...";
+      clearStatus();
+
+      try {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        const { data, error } = await client.auth.signInWithPassword({
+          email,
+          password
+        });
+
+        if (error) throw error;
+
+        if (data.user?.id !== ADMIN_USER_ID) {
+          await client.auth.signOut();
+          throw new Error(
+            "This account is not authorized to manage these photos."
+          );
+        }
+
+        setLoggedIn(true);
+        loginForm.reset();
+        showStatus("Signed in successfully.", "success");
+      } catch (error) {
+        showStatus(error.message || "Sign-in failed.", "error");
+      } finally {
+        busy = false;
+        loginButton.disabled = false;
+        loginButton.textContent = "Sign In";
+      }
+    });
+
+    uploadForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      if (busy) return;
+
+      clearStatus();
+
+      const file = photoInput.files[0];
+
+      if (!file) {
+        showStatus("Please choose a photo first.", "error");
+        return;
+      }
+
+      const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp",
+        "image/gif"
+      ];
+
+      if (!allowedTypes.includes(file.type)) {
+        showStatus(
+          "Unsupported format. Choose a JPG, PNG, WEBP or GIF image.",
+          "error"
+        );
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        showStatus(
+          "This photo exceeds 5 MB. Please choose a smaller image.",
+          "error"
+        );
+        return;
+      }
+
+      busy = true;
+      uploadButton.disabled = true;
+      uploadButton.textContent = "Uploading...";
+
+      try {
+        const authorized = await verifyAdmin();
+
+        if (!authorized) {
+          throw new Error("Please sign in with the authorized admin account.");
+        }
+
+        const safeName = file.name
+          .normalize("NFKD")
+          .replace(/[^a-zA-Z0-9._-]/g, "-")
+          .replace(/-+/g, "-")
+          .slice(-100);
+
+        const uniqueName =
+          "gallery/" +
+          Date.now() +
+          "-" +
+          crypto.randomUUID() +
+          "-" +
+          safeName;
+
+        const { error: uploadError } = await client.storage
+          .from(BUCKET_NAME)
+          .upload(uniqueName, file, {
+            cacheControl: "3600",
+            contentType: file.type,
+            upsert: false
+          });
+
+        if (uploadError) throw uploadError;
+
+        const { data: publicData } = client.storage
+          .from(BUCKET_NAME)
+          .getPublicUrl(uniqueName);
+
+        imageUrl.value = publicData.publicUrl;
+        preview.src = publicData.publicUrl;
+        resultBox.style.display = "block";
+
+        showStatus(
+          "Photo uploaded successfully. Copy the public link below.",
+          "success"
+        );
+
+        photoInput.value = "";
+      } catch (error) {
+        showStatus(
+          "Upload failed: " + (error.message || "Please try again."),
+          "error"
+        );
+      } finally {
+        busy = false;
+        uploadButton.disabled = false;
+        uploadButton.textContent = "Upload Photo";
+      }
+    });
+
+    document.getElementById("copyButton").addEventListener(
+      "click",
+      async function() {
+        try {
+          await navigator.clipboard.writeText(imageUrl.value);
+          showStatus("Photo link copied.", "success");
+        } catch {
+          imageUrl.select();
+          showStatus(
+            "Select and copy the link manually.",
+            "info"
+          );
+        }
+      }
+    );
+
+    document.getElementById("logoutButton").addEventListener(
+      "click",
+      async function() {
+        await client.auth.signOut();
+        setLoggedIn(false);
+        resultBox.style.display = "none";
+        clearStatus();
+        showStatus("You have signed out.", "info");
+      }
+    );
+
+    client.auth.onAuthStateChange(function() {
+      setTimeout(verifyAdmin, 0);
+    });
+
+    verifyAdmin();
+  </script>
+</body>
+</html>
