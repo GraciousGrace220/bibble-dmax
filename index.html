@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>BIBBLE DMAX | Interior Decor & Gadgets - Challenge, Ibadan</title>
+
+<meta name="description" content="BIBBLE DMAX Interior Decor and Gadgets. Upgrade your home, shop or office in Challenge, Ibadan. Contact us on 07059440545.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #0a0a0a;
+    --gold: #d4af37;
+    --yellow: #facc15;
+    --white: #ffffff;
+    --light: #f7f7f7;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+}
+
+.top {
+    background: var(--yellow);
+    color: #000;
+    text-align: center;
+    padding: 9px 12px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+header {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 9;
+}
+
+.logo {
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #b38b18;
+}
+
+.verified {
+    font-size: 10px;
+    background: #fff5bd;
+    color: #493800;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-weight: 800;
+}
+
+.hero {
+    background:
+        radial-gradient(ellipse at top right, #3c3011 0%, transparent 45%),
+        var(--black);
+    color: var(--white);
+    padding: 60px 22px;
+}
+
+.hero .eyebrow {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 8vw, 62px);
+    line-height: 1.03;
+    letter-spacing: -1px;
+}
+
+.hero h1 span {
+    color: var(--yellow);
+}
+
+.hero p {
+    color: #d1d1d1;
+    margin: 20px 0 26px;
+    max-width: 520px;
+    font-size: 15px;
+}
+
+.btn {
+    padding: 14px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 800;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 4px 4px 0;
+    transition: 0.2s;
+}
+
+.btn-y {
+    background: var(--yellow);
+    color: #000;
+}
+
+.btn-y:hover {
+    background: var(--gold);
+}
+
+.btn-g {
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: transparent;
+}
+
+.section-heading {
+    padding: 30px 20px 0;
+}
+
+.section-heading small {
+    color: #a17a09;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: 26px;
+    margin-top: 5px;
+}
+
+.cards {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.card {
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 5px 18px #00000008;
+}
+
+.ph {
+    height: 190px;
+    background: linear-gradient(135deg, #171717, #3c3011);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--yellow);
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    padding: 20px;
+}
+
+.ct {
+    padding: 18px;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 10px;
+    background: var(--yellow);
+    color: #000;
+    padding: 5px 9px;
+    border-radius: 3px;
+    font-weight: 900;
+}
+
+.ct h3 {
+    margin: 12px 0 6px;
+    font-size: 19px;
+}
+
+.ct p {
+    color: #666;
+    font-size: 13px;
+}
+
+.contact {
+    background: #fff8d6;
+    margin: 0 20px 30px;
+    padding: 24px;
+    border-left: 4px solid var(--yellow);
+    border-radius: 6px;
+}
+
+.contact h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.contact p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+.cta {
+    background: var(--black);
+    color: white;
+    padding: 42px 20px;
+    text-align: center;
+    border-top: 3px solid var(--gold);
+}
+
+.cta h2 {
+    font-size: 27px;
+}
+
+.cta p {
+    color: #ccc;
+    margin: 10px 0 20px;
+    font-size: 14px;
+}
+
+footer {
+    background: #050505;
+    color: #999;
+    text-align: center;
+    padding: 18px 12px;
+    font-size: 11px;
+    border-top: 1px solid #292929;
+}
+
+footer span {
+    color: var(--yellow);
+}
+
+@media (min-width: 700px) {
+    .hero {
+        padding: 90px 8%;
+    }
+
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 25px 5%;
+    }
+
+    .section-heading {
+        padding-left: 5%;
+    }
+
+    .ph {
+        height: 220px;
+    }
+
+    .contact {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+    BIBBLE DMAX • INTERIOR DECOR & GADGETS
+    • CHALLENGE, IBADAN • 07059440545
+</div>
+
+<header>
+    <div class="logo">BIBBLE <span>DMAX</span></div>
+    <div class="verified">CAC REGISTERED</div>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="eyebrow">LUXURY • STYLE • SMART LIVING</div>
+
+    <h1>
+        WE STYLE<br>
+        <span>SPACES</span><br>
+        THAT SELL.
+    </h1>
+
+    <p>
+        Interior decor and smart gadgets for homes, salons,
+        shops and offices in Challenge, Ibadan.
+        Give your space a fresh, premium look.
+    </p>
+
+    <a class="btn btn-y"
+       href="https://wa.me/2347059440545?text=Hello%20BIBBLE%20DMAX%2C%20I%20saw%20your%20website.">
+       CHAT ON WHATSAPP
+    </a>
+
+    <a class="btn btn-g" href="tel:+2347059440545">
+       CALL US
+    </a>
+</section>
+
+<section class="section-heading">
+    <small>WHAT WE OFFER</small>
+    <h2>Style Your Space</h2>
+</section>
+
+<section class="cards">
+
+    <article class="card">
+        <div class="ph">ADD YOUR INTERIOR DECOR PHOTO</div>
+        <div class="ct">
+            <span class="tag">INTERIOR DECOR</span>
+            <h3>Homes & Living Spaces</h3>
+            <p>
+                Parlours, bedrooms, curtains, wall styling
+                and TV units. Contact us for a quote.
+            </p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="ph">ADD YOUR GADGETS PHOTO</div>
+        <div class="ct">
+            <span class="tag">GADGETS</span>
+            <h3>Smart Gadgets & Lighting</h3>
+            <p>
+                Explore lighting, LED strips, speakers
+                and other gadgets for everyday living.
+            </p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="ph">ADD YOUR SHOP OR OFFICE PHOTO</div>
+        <div class="ct">
+            <span class="tag">BUSINESS SPACES</span>
+            <h3>Shops, Salons & Offices</h3>
+            <p>
+                Give your business space a professional,
+                modern and welcoming appearance.
+            </p>
+        </div>
+    </article>
+
+</section>
+
+<section class="contact">
+    <h2>Visit or Contact BIBBLE DMAX</h2>
+    <p>
+        Location: Challenge, Ibadan, Oyo State, Nigeria.
+    </p>
+    <p>
+        Phone: 07059440545
+    </p>
+    <a class="btn btn-y"
+       href="https://wa.me/2347059440545">
+       SEND US A MESSAGE
+    </a>
+</section>
+
+<section class="cta">
+    <h2>Let's Style Your Space</h2>
+    <p>
+        Your next home, shop or office upgrade starts here.
+        Contact BIBBLE DMAX today.
+    </p>
+
+    <a class="btn btn-y"
+       href="https://wa.me/2347059440545?text=Hello%20BIBBLE%20DMAX%2C%20I%20want%20to%20make%20an%20enquiry.">
+       07059440545 • WHATSAPP
+    </a>
+</section>
+
+</main>
+
+<footer>
+    Challenge, Ibadan • BIBBLE <span>DMAX</span>
+    <br>
+    Interior Decor & Gadgets
+    <br><br>
+    Powered by LosOja
+</footer>
+
+</body>
+</html>
