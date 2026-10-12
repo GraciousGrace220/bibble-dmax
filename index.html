@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>BIBBLE DMAX | Interior Decor & Gadgets - Challenge, Ibadan</title>
-
-<meta name="description" content="BIBBLE DMAX Interior Decor and Gadgets. Upgrade your home, shop or office in Challenge, Ibadan. Contact us on 07059440545.">
+<title>BIBLE D’MAX | Interior Decor & Gadgets - Ibadan</title>
+<meta name="description" content="BIBLE D’MAX Interior Decor and Gadgets in Challenge, Ibadan. Interior decoration, lighting, gadgets and business space styling.">
+<meta name="theme-color" content="#0a0a0a">
 
 <style>
 * {
@@ -22,6 +22,12 @@
     --yellow: #facc15;
     --white: #ffffff;
     --light: #f7f7f7;
+    --muted: #666666;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
 }
 
 body {
@@ -29,6 +35,10 @@ body {
     background: var(--white);
     color: var(--black);
     line-height: 1.6;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .top {
@@ -41,7 +51,7 @@ body {
 }
 
 header {
-    padding: 16px 20px;
+    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,13 +60,15 @@ header {
     position: sticky;
     top: 0;
     background: #fff;
-    z-index: 9;
+    z-index: 20;
 }
 
 .logo {
     font-size: 19px;
     font-weight: 900;
     letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--black);
 }
 
 .logo span {
@@ -70,6 +82,7 @@ header {
     padding: 6px 10px;
     border-radius: 20px;
     font-weight: 800;
+    white-space: nowrap;
 }
 
 .hero {
@@ -77,10 +90,15 @@ header {
         radial-gradient(ellipse at top right, #3c3011 0%, transparent 45%),
         var(--black);
     color: var(--white);
-    padding: 60px 22px;
+    padding: 65px 22px;
 }
 
-.hero .eyebrow {
+.hero-inner {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.eyebrow {
     color: var(--gold);
     font-size: 12px;
     font-weight: 800;
@@ -89,7 +107,7 @@ header {
 }
 
 .hero h1 {
-    font-size: clamp(38px, 8vw, 62px);
+    font-size: clamp(38px, 8vw, 65px);
     line-height: 1.03;
     letter-spacing: -1px;
 }
@@ -106,14 +124,20 @@ header {
 }
 
 .btn {
-    padding: 14px 20px;
+    padding: 13px 19px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 800;
     display: inline-block;
     font-size: 13px;
     margin: 4px 4px 4px 0;
-    transition: 0.2s;
+    transition: background .2s, transform .2s;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
 }
 
 .btn-y {
@@ -126,13 +150,20 @@ header {
 }
 
 .btn-g {
-    border: 1px solid var(--gold);
+    border-color: var(--gold);
     color: var(--gold);
     background: transparent;
 }
 
+.btn-dark {
+    background: var(--black);
+    color: var(--yellow);
+}
+
 .section-heading {
-    padding: 30px 20px 0;
+    padding: 38px 20px 0;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .section-heading small {
@@ -142,15 +173,24 @@ header {
 }
 
 .section-heading h2 {
-    font-size: 26px;
+    font-size: clamp(23px, 4vw, 30px);
     margin-top: 5px;
 }
 
+.section-heading p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 8px;
+    max-width: 650px;
+}
+
 .cards {
-    padding: 20px;
+    padding: 22px 20px 35px;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .card {
@@ -161,17 +201,23 @@ header {
     box-shadow: 0 5px 18px #00000008;
 }
 
-.ph {
-    height: 190px;
-    background: linear-gradient(135deg, #171717, #3c3011);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--yellow);
-    font-size: 12px;
-    font-weight: 800;
-    text-align: center;
-    padding: 20px;
+.card-photo {
+    height: 225px;
+    overflow: hidden;
+    background: #171717;
+    position: relative;
+}
+
+.card-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .3s;
+}
+
+.card:hover .card-photo img {
+    transform: scale(1.04);
 }
 
 .ct {
@@ -194,27 +240,115 @@ header {
 }
 
 .ct p {
-    color: #666;
+    color: var(--muted);
     font-size: 13px;
+}
+
+.services {
+    background: var(--light);
+    padding-bottom: 35px;
+}
+
+.service-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 22px 20px 0;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.service {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.service-icon {
+    font-size: 28px;
+    margin-bottom: 7px;
+}
+
+.service h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.service p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 22px 20px 35px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.gallery-item {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 9px;
+    overflow: hidden;
+    background: #171717;
+    cursor: pointer;
+    text-align: left;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    transition: transform .25s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+}
+
+.gallery-caption {
+    display: block;
+    background: #111;
+    color: var(--yellow);
+    padding: 9px 10px;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 .contact {
     background: #fff8d6;
-    margin: 0 20px 30px;
+    margin: 0 20px 35px;
     padding: 24px;
     border-left: 4px solid var(--yellow);
     border-radius: 6px;
 }
 
 .contact h2 {
-    font-size: 22px;
+    font-size: 23px;
     margin-bottom: 8px;
 }
 
 .contact p {
     color: #555;
     font-size: 14px;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+.contact a.email {
+    color: #674f00;
+    font-weight: 700;
+}
+
+.contact-actions {
+    margin-top: 12px;
 }
 
 .cta {
@@ -226,20 +360,21 @@ header {
 }
 
 .cta h2 {
-    font-size: 27px;
+    font-size: clamp(24px, 5vw, 30px);
 }
 
 .cta p {
     color: #ccc;
-    margin: 10px 0 20px;
+    margin: 10px auto 20px;
     font-size: 14px;
+    max-width: 550px;
 }
 
 footer {
     background: #050505;
     color: #999;
     text-align: center;
-    padding: 18px 12px;
+    padding: 20px 12px;
     font-size: 11px;
     border-top: 1px solid #292929;
 }
@@ -248,21 +383,84 @@ footer span {
     color: var(--yellow);
 }
 
-@media (min-width: 700px) {
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .94);
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 950px;
+    width: 100%;
+    text-align: center;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.lightbox-caption {
+    color: var(--yellow);
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    border: 1px solid var(--gold);
+    background: #111;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+@media (min-width: 650px) {
     .hero {
         padding: 90px 8%;
     }
 
     .cards {
-        grid-template-columns: repeat(3, 1fr);
-        padding: 25px 5%;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding-left: 5%;
+        padding-right: 5%;
     }
 
     .section-heading {
         padding-left: 5%;
+        padding-right: 5%;
     }
 
-    .ph {
+    .service-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding-left: 5%;
+        padding-right: 5%;
+        gap: 15px;
+    }
+
+    .gallery-item img {
         height: 220px;
     }
 
@@ -271,81 +469,131 @@ footer span {
         margin-right: 5%;
     }
 }
+
+@media (min-width: 950px) {
+    .service-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 380px) {
+    .verified {
+        font-size: 9px;
+        padding: 5px 7px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .gallery-grid {
+        gap: 7px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .gallery-item img {
+        height: 125px;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <div class="top">
-    BIBBLE DMAX • INTERIOR DECOR & GADGETS
-    • CHALLENGE, IBADAN • 07059440545
+    BIBLE D’MAX • INTERIOR DECOR & GADGETS
+    • CHALLENGE, IBADAN
 </div>
 
 <header>
-    <div class="logo">BIBBLE <span>DMAX</span></div>
+    <a class="logo" href="#home">BIBLE <span>D’MAX</span></a>
     <div class="verified">CAC REGISTERED</div>
 </header>
 
 <main>
 
-<section class="hero">
-    <div class="eyebrow">LUXURY • STYLE • SMART LIVING</div>
+<section class="hero" id="home">
+    <div class="hero-inner">
+        <div class="eyebrow">LUXURY • STYLE • SMART LIVING</div>
 
-    <h1>
-        WE STYLE<br>
-        <span>SPACES</span><br>
-        THAT SELL.
-    </h1>
+        <h1>
+            WE STYLE<br>
+            <span>SPACES</span><br>
+            THAT SELL.
+        </h1>
 
-    <p>
-        Interior decor and smart gadgets for homes, salons,
-        shops and offices in Challenge, Ibadan.
-        Give your space a fresh, premium look.
-    </p>
+        <p>
+            Interior decor and smart gadgets for homes, salons,
+            shops and offices in Challenge, Ibadan.
+            Give your space a fresh, premium look.
+        </p>
 
-    <a class="btn btn-y"
-       href="https://wa.me/2347059440545?text=Hello%20BIBBLE%20DMAX%2C%20I%20saw%20your%20website.">
-       CHAT ON WHATSAPP
-    </a>
+        <a class="btn btn-y"
+           href="https://wa.me/2347059440545?text=Hello%20BIBLE%20D%27MAX%2C%20I%20saw%20your%20website."
+           target="_blank" rel="noopener">
+           CHAT ON WHATSAPP
+        </a>
 
-    <a class="btn btn-g" href="tel:+2347059440545">
-       CALL US
-    </a>
+        <a class="btn btn-g" href="tel:+2349066232663">
+           CALL US
+        </a>
+    </div>
 </section>
 
-<section class="section-heading">
+<section class="section-heading" id="services">
     <small>WHAT WE OFFER</small>
     <h2>Style Your Space</h2>
+    <p>Explore our interior styling, gadgets and commercial space services.</p>
 </section>
 
 <section class="cards">
 
     <article class="card">
-        <div class="ph">ADD YOUR INTERIOR DECOR PHOTO</div>
+        <div class="card-photo">
+            <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"
+                alt="Modern living room interior decor"
+                loading="lazy">
+        </div>
         <div class="ct">
             <span class="tag">INTERIOR DECOR</span>
             <h3>Homes & Living Spaces</h3>
             <p>
-                Parlours, bedrooms, curtains, wall styling
+                Living rooms, bedrooms, curtains, wall styling
                 and TV units. Contact us for a quote.
             </p>
         </div>
     </article>
 
     <article class="card">
-        <div class="ph">ADD YOUR GADGETS PHOTO</div>
+        <div class="card-photo">
+            <img
+                src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=900&q=80"
+                alt="Electronic gadgets and technology products"
+                loading="lazy">
+        </div>
         <div class="ct">
             <span class="tag">GADGETS</span>
             <h3>Smart Gadgets & Lighting</h3>
             <p>
-                Explore lighting, LED strips, speakers
-                and other gadgets for everyday living.
+                Explore gadgets, lighting accessories and
+                products for everyday living.
             </p>
         </div>
     </article>
 
     <article class="card">
-        <div class="ph">ADD YOUR SHOP OR OFFICE PHOTO</div>
+        <div class="card-photo">
+            <img
+                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
+                alt="Modern office and commercial interior"
+                loading="lazy">
+        </div>
         <div class="ct">
             <span class="tag">BUSINESS SPACES</span>
             <h3>Shops, Salons & Offices</h3>
@@ -358,42 +606,225 @@ footer span {
 
 </section>
 
-<section class="contact">
-    <h2>Visit or Contact BIBBLE DMAX</h2>
+<section class="services">
+    <div class="section-heading">
+        <small>OUR SERVICES</small>
+        <h2>Designed Around You</h2>
+    </div>
+
+    <div class="service-list">
+
+        <article class="service">
+            <div class="service-icon" aria-hidden="true">🏠</div>
+            <h3>Home Decoration</h3>
+            <p>Interior styling ideas for living rooms, bedrooms and other home spaces.</p>
+        </article>
+
+        <article class="service">
+            <div class="service-icon" aria-hidden="true">💡</div>
+            <h3>Lighting & Gadgets</h3>
+            <p>Lighting accessories, decorative lights and gadgets for your space.</p>
+        </article>
+
+        <article class="service">
+            <div class="service-icon" aria-hidden="true">🏢</div>
+            <h3>Commercial Interiors</h3>
+            <p>Styling for shops, salons, offices and customer-facing spaces.</p>
+        </article>
+
+        <article class="service">
+            <div class="service-icon" aria-hidden="true">📺</div>
+            <h3>TV Wall Styling</h3>
+            <p>Ask about TV units, feature walls and entertainment area styling.</p>
+        </article>
+
+        <article class="service">
+            <div class="service-icon" aria-hidden="true">🛋️</div>
+            <h3>Living Space Upgrades</h3>
+            <p>Discuss decor options to refresh your room and improve its appearance.</p>
+        </article>
+
+        <article class="service">
+            <div class="service-icon" aria-hidden="true">💬</div>
+            <h3>Personal Enquiries</h3>
+            <p>Contact us to discuss your project, product enquiries and quotations.</p>
+        </article>
+
+    </div>
+</section>
+
+<section class="section-heading" id="gallery">
+    <small>OUR GALLERY</small>
+    <h2>Ideas for Your Space</h2>
     <p>
-        Location: Challenge, Ibadan, Oyo State, Nigeria.
+        Browse these sample inspiration photos. Tap any image to view it larger.
+        Replace the samples with BIBLE D’MAX's actual project photos when available.
     </p>
-    <p>
-        Phone: 07059440545
+</section>
+
+<section class="gallery-grid" aria-label="Interior decor inspiration gallery">
+
+    <button class="gallery-item" type="button"
+        data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85"
+        data-caption="Modern living room">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=75"
+             alt="Modern living room inspiration" loading="lazy">
+        <span class="gallery-caption">Living Rooms</span>
+    </button>
+
+    <button class="gallery-item" type="button"
+        data-image="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=85"
+        data-caption="Interior styling inspiration">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=75"
+             alt="Interior decoration inspiration" loading="lazy">
+        <span class="gallery-caption">Interior Styling</span>
+    </button>
+
+    <button class="gallery-item" type="button"
+        data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85"
+        data-caption="Contemporary home design">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=75"
+             alt="Contemporary home interior" loading="lazy">
+        <span class="gallery-caption">Home Design</span>
+    </button>
+
+    <button class="gallery-item" type="button"
+        data-image="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85"
+        data-caption="Office interior inspiration">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=75"
+             alt="Office interior inspiration" loading="lazy">
+        <span class="gallery-caption">Office Spaces</span>
+    </button>
+
+    <button class="gallery-item" type="button"
+        data-image="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=1400&q=85"
+        data-caption="Gadgets and technology">
+        <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=600&q=75"
+             alt="Gadgets and technology products" loading="lazy">
+        <span class="gallery-caption">Gadgets</span>
+    </button>
+
+    <button class="gallery-item" type="button"
+        data-image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=85"
+        data-caption="Home styling inspiration">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=600&q=75"
+             alt="Home decor inspiration" loading="lazy">
+        <span class="gallery-caption">Home Styling</span>
+    </button>
+
+</section>
+
+<section class="contact" id="contact">
+    <h2>Visit or Contact BIBLE D’MAX</h2>
+
+    <p><strong>Location:</strong> Challenge, Ibadan, Oyo State, Nigeria</p>
+    <p><strong>Call:</strong> <a href="tel:+2349066232663">09066232663</a></p>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/2347059440545" target="_blank" rel="noopener">07059440545</a></p>
+    <p><strong>Email:</strong>
+        <a class="email" href="mailto:BibleDmaxinteriordecor@gmail.com">
+            BibleDmaxinteriordecor@gmail.com
+        </a>
     </p>
-    <a class="btn btn-y"
-       href="https://wa.me/2347059440545">
-       SEND US A MESSAGE
-    </a>
+
+    <div class="contact-actions">
+        <a class="btn btn-y"
+           href="https://wa.me/2347059440545?text=Hello%20BIBLE%20D%27MAX%2C%20I%20want%20to%20make%20an%20enquiry."
+           target="_blank" rel="noopener">
+           SEND A WHATSAPP MESSAGE
+        </a>
+
+        <a class="btn btn-dark" href="tel:+2349066232663">
+           CALL NOW
+        </a>
+    </div>
 </section>
 
 <section class="cta">
-    <h2>Let's Style Your Space</h2>
+    <h2>Let’s Style Your Space</h2>
     <p>
         Your next home, shop or office upgrade starts here.
-        Contact BIBBLE DMAX today.
+        Contact BIBLE D’MAX to discuss your needs.
     </p>
 
     <a class="btn btn-y"
-       href="https://wa.me/2347059440545?text=Hello%20BIBBLE%20DMAX%2C%20I%20want%20to%20make%20an%20enquiry.">
-       07059440545 • WHATSAPP
+       href="https://wa.me/2347059440545?text=Hello%20BIBLE%20D%27MAX%2C%20I%20want%20to%20make%20an%20enquiry."
+       target="_blank" rel="noopener">
+       CHAT WITH US
+    </a>
+
+    <a class="btn btn-g" href="tel:+2349066232663">
+       09066232663
     </a>
 </section>
 
 </main>
 
 <footer>
-    Challenge, Ibadan • BIBBLE <span>DMAX</span>
+    Challenge, Ibadan • BIBLE <span>D’MAX</span>
     <br>
     Interior Decor & Gadgets
     <br><br>
     Powered by LosOja
 </footer>
+
+<div class="lightbox" id="lightbox" role="dialog"
+     aria-modal="true" aria-label="Gallery image viewer">
+    <button class="lightbox-close" id="lightboxClose"
+            type="button" aria-label="Close image viewer">×</button>
+    <div class="lightbox-content">
+        <img id="lightboxImage" src="" alt="">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+</div>
+
+<script>
+(function () {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const closeButton = document.getElementById("lightboxClose");
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    let previousFocus = null;
+
+    function closeGallery() {
+        lightbox.classList.remove("open");
+        lightboxImage.src = "";
+        document.body.style.overflow = "";
+        if (previousFocus) previousFocus.focus();
+    }
+
+    galleryItems.forEach(function (item) {
+        item.addEventListener("click", function () {
+            const image = item.getAttribute("data-image");
+            const caption = item.getAttribute("data-caption");
+
+            if (!image) return;
+
+            previousFocus = item;
+            lightboxImage.src = image;
+            lightboxImage.alt = caption || "Gallery image";
+            lightboxCaption.textContent = caption || "";
+
+            lightbox.classList.add("open");
+            document.body.style.overflow = "hidden";
+            closeButton.focus();
+        });
+    });
+
+    closeButton.addEventListener("click", closeGallery);
+
+    lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) closeGallery();
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && lightbox.classList.contains("open")) {
+            closeGallery();
+        }
+    });
+})();
+</script>
 
 </body>
 </html>
